@@ -1,0 +1,64 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand">Library Management System</a>
+            </div>
+            <div class="navbar-collapse collapse hidden">
+                <ul class="nav navbar-nav">
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                    
+                </ul>
+                {% include 'app/loginpartial.html' %}
+            </div>
+        </div>
+    </div>
+
+<form id="logoutForm" action="/logout/" method="post" class="navbar-right">
+    {% csrf_token %}
+    <ul class="nav navbar-nav navbar-right">
+        <li><span class="navbar-brand"></span></li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+    </ul>
+</form>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <a href="{% url 'libraryStr' user%}">Back</a>
+        <h2>Search page.</h2>
+        <div id="searchForm">
+            <form action="{% url 'showSearch' %}" method="post" class="form-horizontal">
+                {% csrf_token %}
+                <input class="form-control" type="text" placeholder="Search" aria-label="Search" name="search">
+                <input type = "Submit" class="btn btn-dark" value="Submit">
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        {% if query %}
+            <p>showing results for {{query}}. </p>
+            <br/>
+            {% for item in itemList %}
+                <a href="{% url 'rent' item.id %}">{{item.itemName}}</a> 
+                
+            {% endfor %}
+        {% else %}
+            <p>Please enter a query!</p>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

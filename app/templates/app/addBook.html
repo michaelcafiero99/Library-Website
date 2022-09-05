@@ -1,0 +1,62 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">Library Management System</a>
+        </div>
+        <div class="navbar-collapse collapse hidden">
+            <ul class="nav navbar-nav">
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+
+            </ul>
+            {% include 'app/loginpartial.html' %}
+        </div>
+    </div>
+</div>
+
+<form id="logoutForm" action="/logout/" method="post" class="navbar-right">
+    {% csrf_token %}
+    <ul class="nav navbar-nav navbar-right">
+        <li><span class="navbar-brand"></span></li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+    </ul>
+</form>
+
+<h2>{{ title }}</h2>
+
+<div class="row">
+    <div class="col-md-8">
+        <section id="addBookForm">
+            <form action="/addBook/" method="post" class="form-horizontal">
+                {% csrf_token %}
+                <h4>Enter a book/item you want to add to the library</h4>
+                <hr />
+                <input class="form-control" type="text" placeholder="item name" aria-label="Search" name="name">
+                <input class="form-control" type="text" placeholder="item author" aria-label="Search" name="author">
+                <input class="form-control" type="text" placeholder="item type" aria-label="Search" name="type">
+                <input class="form-control" type="text" placeholder="how many items?" aria-label="Search" name="count">
+                <input type="Submit" class="btn btn-dark" value="Submit">
+
+            </form>
+        </section>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+{% load static %}
+<script src="{% static 'app/scripts/jquery.validate.min.js' %}"></script>
+
+{% endblock %}

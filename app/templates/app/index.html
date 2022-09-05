@@ -1,0 +1,31 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <h1>Welcome</h1>
+    <p class="lead">Welcome to the library management system developed by Yab Lemma and Michael Cafiero.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <p>
+            The Library MS allows you to rent books, articles, newpapers... from the library, book study rooms and much more!
+        </p>
+        <p><a class="btn btn-default" href="{% url 'about' %}">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Implementation</h2>
+        <p>The Website is developed with the use of django, bootstrap and jquery.</p>
+        <p><a class="btn btn-default" href="https://github.com/cse330-fall-2021/creativeproject-creativeproject-487404-500139">Get the Code! &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Creative Portion</h2>
+        <p>Click here to to get more information about out creative portions.</p>
+        <p><a class="btn btn-default" href="{% url 'about' %}">Learn more &raquo;</a></p>
+    </div>
+
+</div>
+
+{% endblock %}

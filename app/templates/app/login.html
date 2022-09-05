@@ -1,0 +1,29 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}</h2>
+<div class="row">
+    <div class="col-md-8">
+        <section id="loginForm">
+            <form method="post" class="form-horizontal">
+                {% csrf_token %}
+                <h4>Use a local account to log in.</h4>
+                <hr />
+                <input class="form-control" type="text" placeholder="username" aria-label="Search" name="username">
+                <input class="form-control" type="password" placeholder="password" aria-label="Search" name="password">
+                <input type = "Submit" class="btn btn-dark" value="Submit">
+            </form>
+        </section>
+    </div>
+</div>
+  <a href="{% url 'employeeLogin' %}">Go to employee login</a> 
+{% endblock %}
+
+
+{% block scripts %}
+
+    {% load static %}
+<script src="{% static 'app/scripts/jquery.validate.min.js' %}"></script>
+
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand">Library Management System</a>
+            </div>
+            <div class="navbar-collapse collapse hidden">
+                <ul class="nav navbar-nav">
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                    
+                </ul>
+                {% include 'app/loginpartial.html' %}
+            </div>
+        </div>
+    </div>
+
+<form id="logoutForm" action="/logout/" method="post" class="navbar-right">
+    {% csrf_token %}
+    <ul class="nav navbar-nav navbar-right">
+        <li><span class="navbar-brand"></span></li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+    </ul>
+</form>
+
+<h2>Welcome, {{ user }}.</h2>
+
+
+<div class="row-lg-12">
+    <div class="col-md-8">
+        <div id="searchForm">
+            <form action="{% url 'showSearch' %}" method="post" class="form-horizontal">
+                {% csrf_token %}
+                <input class="form-control" type="text" placeholder="Search" aria-label="Search" name="search">
+                <input type = "Submit" class="btn btn-dark" value="Submit">
+            </form>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div id="myRent">
+            <form action="{% url 'myRent' %}" method="post" class="form-horizontal">
+                {% csrf_token %}
+                <input type = "Submit" class="btn btn-dark" value="Rented Items"><br/>
+            </form>
+        </div>
+        <div id="mostRented">
+            <h2>Most Rented</h2>
+            {% for item in mostRented %}
+            <h4>{{item.itemName}}, by {{item.author}}</h4>
+            {% endfor %}
+        </div>
+         <div id="rooms">
+            <form action="{% url 'rooms' %}" method="post" class="form-horizontal">
+                {% csrf_token %}
+                <input type="Submit" class="btn btn-dark" value="Study Rooms"><br />
+            </form>
+         </div>
+    </div>
+</div>
+
+
+{% endblock %}
