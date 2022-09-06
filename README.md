@@ -1,13 +1,16 @@
-# CSE330
+# Library Management Website
 
-Yab Lemma - 500139 - Yeab1
+## Description
 
-Michael Cafiero - 487404 - michaelcafiero99
+This library management website was created using Python Django. This website allow users to virtually view, and checkout books from the database of titles held by the library. Librarian accounts can also be created, and the librarian can add and manage the books held by the library. Additionally, a user can book study rooms or other spaces in the library, and view the books they currently have checked out. 
+## Resources Used
 
-Creative Portion I - Room Management System
+* Django
+* SQL
+* HTML
+* CSS
 
-Users are able to book study rooms from the library. A list of available rooms will be displayed in the home page along with the availability to book each one. Users can also checkout of the room they rented. Users can only book one room at a time.
+## Credits
 
-Creative Portion II - Librarians
+This project was created as a part of the Washington University course CSE 330, and in collaberation with Yeabsira Lemma.
 
-The website has been implemented with admins(employees) which have the ability to add new items to the library. A separate login has been created for employees. An emplyee table has also been implemented within SQL database.
